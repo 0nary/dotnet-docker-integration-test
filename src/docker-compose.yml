@@ -30,14 +30,6 @@ services:
       - .:/src
       - ../test:/test
     working_dir: /src
-    command:
-      [
-        "./Scripts/wait-for-it.sh",
-        "sql-server-database:1433",
-        "--",
-        "dotnet",
-        "test",
-        "../test/Timesheets.Tests.csproj"
-      ]
+    command: "dotnet test"
     depends_on:
       - sql-server-database
