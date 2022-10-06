@@ -2,15 +2,14 @@ version: "3.4"
 services:
   timesheets-api:
     container_name: timesheets-api
-    image: mcr.microsoft.com/dotnet/sdk:5.0
+    image: timesheets-api
+    build:
+        context: ../
+        dockerfile: ./src/Dockerfile
     environment:
       - ConnectionStrings__TimeSheetContext=Data Source=sql-server-database; Initial Catalog=TimeSheets; User Id=sa; Password=1AvenueCodePassword*
-    volumes:
-      - ./Timesheets:/api
-    working_dir: /api
     depends_on:
       - sql-server-database
-    command: "dotnet run"
     ports:
       - "8001:8081"
   sql-server-database:
