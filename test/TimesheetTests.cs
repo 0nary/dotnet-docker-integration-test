@@ -18,6 +18,7 @@ namespace Timesheets.Tests
             var employeeId = "e978f409-9955-497d-8f97-917dfc054b80";
 
             // Act
+            Console.WriteLine(Client.BaseAddress.ToString());
             var response = await Client.GetAsync($"/api/Timesheet?employeeId={employeeId}");
 
             // Assert
